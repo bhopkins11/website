@@ -473,6 +473,10 @@ h3 {
   line-height: 1.02;
 }
 
+.h2_wide {
+  max-width: none;
+}
+
 .testimonial-card::before {
   content: "“";
   position: absolute;
@@ -595,13 +599,7 @@ h3 {
 }
 
 .about-mini-heading {
-  margin: 0 0 0.8rem;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--blue-strong);
+  margin: 0 0 1rem;
 }
 
 .about-points {
