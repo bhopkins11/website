@@ -242,6 +242,96 @@ main {
   align-items: center;
 }
 
+.founder-tile {
+  display: grid;
+  grid-template-columns: minmax(150px, 200px) minmax(0, 1fr);
+  gap: 1.35rem;
+  align-items: center;
+  margin: 0;
+  padding: 1.2rem;
+  background:
+    radial-gradient(circle at top left, rgba(141, 220, 255, 0.38), transparent 34%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(233, 246, 255, 0.9));
+  border: 1px solid rgba(119, 181, 235, 0.28);
+  border-radius: calc(var(--radius) - 4px);
+  box-shadow: var(--shadow-soft);
+}
+
+.founder-section {
+  padding-top: 0;
+}
+
+.founder-photo {
+  min-height: 12.5rem;
+  padding: 0.55rem;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(88, 169, 255, 0.2), rgba(141, 220, 255, 0.5));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.founder-photo-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 11.4rem;
+  aspect-ratio: 4 / 5;
+  border-radius: 22px;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: 0 16px 30px rgba(64, 125, 181, 0.12);
+}
+
+.founder-bio {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.founder-kicker {
+  margin: 0;
+  color: var(--blue-strong);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.founder-title {
+  margin: 0;
+  color: var(--heading);
+  font-size: clamp(1.12rem, 1.7vw, 1.4rem);
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.founder-summary {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.founder-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0.15rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.founder-points li {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.6rem;
+  padding: 0.7rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(119, 181, 235, 0.24);
+  color: var(--heading);
+  font-size: 0.92rem;
+  font-weight: 700;
+  box-shadow: 0 10px 22px rgba(82, 144, 199, 0.08);
+}
+
 .eyebrow {
   margin: 0 0 1rem;
   color: var(--blue-strong);
@@ -771,6 +861,14 @@ h3 {
     padding-top: 2rem;
   }
 
+  .founder-tile {
+    grid-template-columns: 1fr;
+  }
+
+  .founder-photo {
+    max-width: 18rem;
+  }
+
   .hero-panel {
     max-width: 42rem;
     padding-left: 0;
@@ -827,6 +925,20 @@ h3 {
   .hero-offer {
     min-height: auto;
     margin-right: 0;
+  }
+
+  .founder-tile {
+    padding: 1rem;
+  }
+
+  .founder-photo {
+    max-width: none;
+    min-height: 10.5rem;
+  }
+
+  .founder-points {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 
   .bg-grid {
