@@ -213,8 +213,18 @@ main {
   padding: 2rem 0 5rem;
 }
 
+.audience-page[hidden] {
+  display: none !important;
+}
+
+html[data-audience="business"] .audience-page[data-audience-page="startup"],
+html[data-audience="startup"] .audience-page[data-audience-page="business"] {
+  display: none;
+}
+
 .section {
   padding: 4.75rem 0;
+  scroll-margin-top: 7.5rem;
 }
 
 .section-surface {
@@ -233,6 +243,94 @@ main {
     linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(244, 251, 255, 0.92));
   border: 1px solid rgba(119, 181, 235, 0.18);
   box-shadow: var(--shadow-soft);
+}
+
+.audience-switch {
+  padding-top: 1.4rem;
+  padding-bottom: 1.8rem;
+}
+
+.audience-switch-panel {
+  position: relative;
+  padding: clamp(1.4rem, 3vw, 2.1rem);
+  background:
+    radial-gradient(circle at top right, rgba(141, 220, 255, 0.32), transparent 24%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.95), rgba(233, 246, 255, 0.92));
+  border: 1px solid rgba(119, 181, 235, 0.26);
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: var(--shadow);
+}
+
+.audience-switch-heading {
+  gap: 0.75rem;
+}
+
+.audience-switch-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.audience-toggle {
+  display: grid;
+  gap: 0.55rem;
+  width: 100%;
+  min-height: 8rem;
+  padding: 1.3rem 1.35rem;
+  border: 1px solid rgba(119, 181, 235, 0.24);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: var(--shadow-soft);
+  color: var(--heading);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease;
+}
+
+.audience-toggle:hover,
+.audience-toggle:focus-visible {
+  transform: translateY(-3px);
+  border-color: rgba(47, 130, 232, 0.28);
+}
+
+.audience-toggle.is-active,
+.audience-toggle[aria-pressed="true"],
+html[data-audience="business"] .audience-toggle[data-audience-control="business"],
+html[data-audience="startup"] .audience-toggle[data-audience-control="startup"] {
+  border-color: rgba(47, 130, 232, 0.28);
+  background:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.34), transparent 30%),
+    linear-gradient(140deg, var(--blue-strong), var(--blue));
+  box-shadow: 0 22px 40px rgba(88, 169, 255, 0.24);
+  color: #fff;
+}
+
+.audience-toggle-label {
+  display: block;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.audience-toggle-copy {
+  display: block;
+  max-width: 34ch;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.audience-toggle.is-active .audience-toggle-copy,
+.audience-toggle[aria-pressed="true"] .audience-toggle-copy,
+html[data-audience="business"] .audience-toggle[data-audience-control="business"] .audience-toggle-copy,
+html[data-audience="startup"] .audience-toggle[data-audience-control="startup"] .audience-toggle-copy {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .hero {
@@ -257,6 +355,11 @@ main {
   box-shadow: var(--shadow-soft);
 }
 
+.founder-stack {
+  display: grid;
+  gap: 1.4rem;
+}
+
 .founder-section {
   padding-top: 0;
 }
@@ -279,6 +382,29 @@ main {
   object-fit: cover;
   object-position: center;
   box-shadow: 0 16px 30px rgba(64, 125, 181, 0.12);
+}
+
+.founder-photo-placeholder {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.72), transparent 28%),
+    linear-gradient(160deg, rgba(88, 169, 255, 0.3), rgba(16, 89, 168, 0.72));
+}
+
+.founder-photo-initials {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 7rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--blue-strong);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  box-shadow: 0 16px 30px rgba(64, 125, 181, 0.16);
 }
 
 .founder-bio {
@@ -351,7 +477,7 @@ h3 {
 }
 
 h1 {
-  max-width: 12ch;
+  max-width: 15ch;
   font-size: clamp(2.35rem, 5.2vw, 4.35rem);
 }
 
@@ -581,6 +707,10 @@ h3 {
   background:
     radial-gradient(circle at top right, rgba(141, 220, 255, 0.3), transparent 28%),
     linear-gradient(180deg, rgba(223, 244, 255, 0.96), rgba(255, 255, 255, 0.96));
+}
+
+.testimonial-card::before {
+  content: "\"";
 }
 
 .testimonial-card p {
@@ -906,6 +1036,14 @@ h3 {
 
   .section {
     padding: 3.8rem 0;
+  }
+
+  .audience-switch-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .audience-toggle {
+    min-height: auto;
   }
 
   .contact-meta {
